@@ -34,16 +34,16 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    // Without BLOB_READ_WRITE_TOKEN the plugin disables itself and Media
+    // Without book_READ_WRITE_TOKEN the plugin disables itself and Media
     // falls back to local disk storage in /media, so local dev works as before.
     vercelBlobStorage({
-      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      enabled: Boolean(process.env.book_READ_WRITE_TOKEN),
       // Keep the DB schema identical whether or not Blob is enabled.
       alwaysInsertFields: true,
       collections: {
         media: true,
       },
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      token: process.env.book_READ_WRITE_TOKEN,
     }),
   ],
 })
