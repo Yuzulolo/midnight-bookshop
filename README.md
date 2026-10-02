@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Midnight Bookshop
 
-## Getting Started
+A secondhand book marketplace where visitors can browse, buy, rent, or list books 
+for exchange. Built with Next.js, Payload CMS, and Stripe Checkout.
 
-First, run the development server:
+## What the shop sells
+Secondhand books — listed for sale, rent, or exchange. Visitors can browse approved 
+listings and purchase through Stripe Checkout (sandbox mode). Anyone can submit a 
+book to sell, rent, or offer for exchange. Submissions are reviewed and approved by 
+the shop owner through the admin panel.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How the owner edits content
+The owner manages all content through the Payload CMS admin panel at `/admin`. From 
+there, the owner can:
+- Review, approve, or reject book submissions (pending → approved)
+- Create, edit, or delete book listings directly
+- View paid orders
+- Upload cover photos (books without photos display a generated cover)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Changes made in the admin panel go live immediately with no redeploy needed.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to run locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repo and install dependencies:
 
-## Learn More
+   ```bash
+   git clone https://github.com/TuringCollegeSubmissions/yuzeli-AFA.BAI.4.7.git
+   cd yuzeli-AFA.BAI.4.7
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Create `.env.local` with these variables:
+   - `DATABASE_URI` — Supabase Postgres connection string (Project Settings → Database → Connection string → Transaction pooler, port 6543)
+   - `PAYLOAD_SECRET` — any random string (generate with `openssl rand -base64 32`)
+   - `STRIPE_SECRET_KEY` — Stripe test key starting with `sk_test_` (Stripe Dashboard → Developers → API keys)
+   - `STRIPE_WEBHOOK_SECRET` — from `stripe listen` (see step 4)
+   - `OPENROUTER_API_KEY` — OpenRouter API key for the shop owner chat feature
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Start the dev server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. For webhook testing, in a separate terminal:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   stripe listen --all-snapshot --forward-to localhost:3000/api/webhooks/stripe
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Open `http://localhost:3000` for the shop, `http://localhost:3000/admin` for the admin panel.
+
+## Optional tasks completed
+- **Orders collection in Payload** (medium): each paid order is recorded in an Orders 
+  collection visible in the admin panel. Orders are only created by server-side code 
+  and marked paid only when the Stripe webhook confirms payment.
