@@ -12,44 +12,76 @@ export type ListingDraft = {
 };
 export type ChatMessage = { role: "user" | "assistant"; content: string };
 
-export function validateDraft(value: unknown): ListingDraft | null {
-  if (!value || typeof value !== "object") return null;
-  const draft = value as Record<string, unknown>;
-  for (const key of ["title", "author", "description", "submitterEmail"]) {
-    if (typeof draft[key] !== "string" || !draft[key].trim()) return null;
+const limits = {
+  title: 200,
+  author: 200,
+  description: 500,
+  submitterEmail: 254,
+};
+// Models often send "Like new", "Navy" or "€12"; normalize those instead of rejecting them.
+const keyword = (value: unknown) =>
+  typeof value === "string"
+    ? value.trim().toLowerCase().replace(/\s+/g, "-")
+    : value;
+const amount = (value: unknown) =>
+  typeof value === "string" &&
+  /^\s*€?\s*\d+(\.\d+)?\s*(€|eur|euros?)?\s*$/i.test(value)
+    ? Number(value.replace(/[^\d.]/g, ""))
+    : value;
+
+export function parseDraft(
+  value: unknown,
+):
+  | { draft: ListingDraft; errors?: never }
+  | { draft?: never; errors: string[] } {
+  if (!value || typeof value !== "object")
+    return { errors: ["No listing details were given."] };
+  const input = value as Record<string, unknown>;
+  const errors: string[] = [];
+  const text: Record<string, string> = {};
+  for (const [key, max] of Object.entries(limits)) {
+    const field = input[key];
+    if (typeof field !== "string" || !field.trim())
+      errors.push(`${key} is missing.`);
+    else if (field.trim().length > max)
+      errors.push(`${key} must be ${max} characters or fewer.`);
+    else text[key] = field.trim();
   }
   if (
-    (draft.title as string).length > 200 ||
-    (draft.author as string).length > 200 ||
-    (draft.description as string).length > 500 ||
-    (draft.submitterEmail as string).length > 254
+    text.submitterEmail &&
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text.submitterEmail)
   )
-    return null;
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(draft.submitterEmail as string))
-    return null;
+    errors.push("submitterEmail is not a valid email address.");
+  const listingType = keyword(input.listingType);
+  if (!["sell", "rent", "exchange"].includes(listingType as string))
+    errors.push("listingType must be sell, rent or exchange.");
+  const condition = keyword(input.condition);
+  if (!["new", "like-new", "good", "worn"].includes(condition as string))
+    errors.push("condition must be new, like-new, good or worn.");
+  const coverColor = keyword(input.coverColor);
+  if (!isCoverColor(coverColor))
+    errors.push("coverColor is not one of the offered colours.");
+  const price = amount(input.price);
   if (
-    !["sell", "rent", "exchange"].includes(draft.listingType as string) ||
-    !["new", "like-new", "good", "worn"].includes(draft.condition as string) ||
-    !isCoverColor(draft.coverColor)
+    listingType !== "exchange" &&
+    (typeof price !== "number" || !Number.isFinite(price) || price < 0)
   )
-    return null;
-  if (
-    draft.listingType !== "exchange" &&
-    (typeof draft.price !== "number" ||
-      !Number.isFinite(draft.price) ||
-      draft.price < 0)
-  )
-    return null;
+    errors.push("price in EUR is required for sell or rent listings.");
+  if (errors.length) return { errors };
   return {
-    title: (draft.title as string).trim(),
-    author: (draft.author as string).trim(),
-    description: (draft.description as string).trim(),
-    submitterEmail: (draft.submitterEmail as string).trim(),
-    listingType: draft.listingType as ListingDraft["listingType"],
-    condition: draft.condition as ListingDraft["condition"],
-    coverColor: draft.coverColor,
-    ...(draft.listingType === "exchange"
-      ? {}
-      : { price: draft.price as number }),
+    draft: {
+      title: text.title,
+      author: text.author,
+      description: text.description,
+      submitterEmail: text.submitterEmail,
+      listingType: listingType as ListingDraft["listingType"],
+      condition: condition as ListingDraft["condition"],
+      coverColor: coverColor as CoverColor,
+      ...(listingType === "exchange" ? {} : { price: price as number }),
+    },
   };
+}
+
+export function validateDraft(value: unknown): ListingDraft | null {
+  return parseDraft(value).draft ?? null;
 }

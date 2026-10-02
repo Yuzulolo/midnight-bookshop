@@ -196,6 +196,90 @@ test("owner prepares a listing without posting it or publishing it", async () =>
   assert.equal(calls, 2);
 });
 
+test("listing validation normalizes casual model formatting and explains problems", () => {
+  assert.deepEqual(
+    validation.validateDraft({
+      ...draft,
+      price: "€8",
+      condition: "Good",
+      coverColor: "Oxblood",
+      listingType: "Sell",
+    }),
+    draft,
+  );
+  assert.deepEqual(
+    validation.validateDraft({ ...draft, condition: "Like new" }).condition,
+    "like-new",
+  );
+  const { errors } = validation.parseDraft({ ...draft, submitterEmail: "" });
+  assert.deepEqual(errors, ["submitterEmail is missing."]);
+});
+
+test("a reply that promises a Submit button without a draft forces prepare_listing", async () => {
+  const bodies = [];
+  const post = route(async (_url, init) => {
+    const sent = JSON.parse(init.body);
+    bodies.push(sent);
+    if (bodies.length === 1)
+      return reply({ content: "All set. Click Submit for review below." });
+    if (bodies.length === 2)
+      return reply({
+        content: null,
+        tool_calls: [
+          {
+            id: "forced",
+            type: "function",
+            function: {
+              name: "prepare_listing",
+              arguments: JSON.stringify(draft),
+            },
+          },
+        ],
+      });
+    return reply({ content: "Review the card, then click Submit for review." });
+  });
+  const body = await (
+    await post(request([{ role: "user", content: "Yes, that is correct." }]))
+  ).json();
+  assert.deepEqual(bodies[1].tool_choice, {
+    type: "function",
+    function: { name: "prepare_listing" },
+  });
+  assert.equal(bodies[2].tool_choice, "auto");
+  assert.equal(body.message, "Review the card, then click Submit for review.");
+  assert.deepEqual(body.draft, draft);
+});
+
+test("a forced listing with missing fields returns the problems to the owner", async () => {
+  const bodies = [];
+  const post = route(async (_url, init) => {
+    bodies.push(JSON.parse(init.body));
+    if (bodies.length === 1) return reply({ content: "Press Submit now." });
+    if (bodies.length === 2)
+      return reply({
+        content: null,
+        tool_calls: [
+          {
+            id: "forced",
+            type: "function",
+            function: {
+              name: "prepare_listing",
+              arguments: JSON.stringify({ ...draft, submitterEmail: "" }),
+            },
+          },
+        ],
+      });
+    return reply({ content: "What email should I use?" });
+  });
+  const body = await (
+    await post(request([{ role: "user", content: "Done." }]))
+  ).json();
+  const toolResult = JSON.parse(bodies[2].messages.at(-1).content);
+  assert.deepEqual(toolResult.problems, ["submitterEmail is missing."]);
+  assert.equal(body.draft, null);
+  assert.equal(body.message, "What email should I use?");
+});
+
 test("provider failures and empty responses produce recoverable errors", async () => {
   const input = [{ role: "user", content: "Hello" }];
   assert.equal(
