@@ -1067,3 +1067,263 @@ body {
     width: calc(100% - 24px);
   }
 }
+
+/* Supporting pages share the shop's ink, cobalt, rust and aged ivory. */
+.bookshop-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  color: #e7dfc6;
+  background: #0d1523;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  padding: 32px 40px 0;
+  color-scheme: dark;
+}
+.bookshop-page::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 0, #16346b80, transparent 65%),
+    linear-gradient(
+      90deg,
+      #080e1780,
+      transparent 20%,
+      transparent 80%,
+      #080e1780
+    );
+}
+.bookshop-page .paper-grain {
+  z-index: -1;
+  opacity: 0.12;
+}
+.bookshop-page-header {
+  max-width: 1120px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.bookshop-back {
+  color: #c1b599;
+  font-size: 17px;
+  border-bottom: 1px solid #b69a6255;
+  padding: 6px 0;
+}
+.bookshop-back:hover {
+  color: #f3e8ca;
+}
+.bookshop-page-card {
+  position: relative;
+  max-width: 640px;
+  margin: 64px auto 72px;
+  background: #121a27;
+  border: 1px solid #776344;
+  border-top: 3px solid #793025;
+  box-shadow: 8px 8px 0 #080e1766;
+  padding: 40px 44px;
+}
+.bookshop-page-card > .eyebrow {
+  color: #c6a465;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  max-width: 90%;
+}
+.bookshop-page-moon {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 32px;
+  color: #b89552;
+}
+.bookshop-page-card h1 {
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 1.1;
+  margin: 19px 0 12px;
+}
+.bookshop-page-copy {
+  font-size: 19px;
+  line-height: 1.55;
+  color: #c7bda6;
+}
+.bookshop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  margin-top: 32px;
+  font-size: 19px;
+}
+.bookshop-form > label,
+.bookshop-form legend {
+  color: #e7dfc6;
+}
+.bookshop-input {
+  display: block;
+  margin-top: 7px;
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid #6a614e;
+  border-radius: 2px;
+  background: #0b121e;
+  color: #f0e6cd;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.bookshop-input:hover {
+  border-color: #a18b64;
+}
+.bookshop-input:focus-visible {
+  border-color: #c6a465;
+  outline: 2px solid #c6a465;
+  outline-offset: 3px;
+}
+.bookshop-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.bookshop-field-hint {
+  color: #b7ad98;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.bookshop-form fieldset {
+  border-block: 1px solid #77634466;
+  padding: 20px 0;
+}
+.bookshop-form legend {
+  padding-right: 12px;
+}
+.bookshop-form fieldset > p {
+  margin: 5px 0 12px;
+}
+.bookshop-file {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 12px;
+  color: #c7bda6;
+}
+.bookshop-file::file-selector-button {
+  background: #263249;
+  color: #e7dfc6;
+  border: 1px solid #998765;
+  padding: 8px 12px;
+  margin-right: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+.bookshop-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  padding: 12px 22px;
+  background: #793025;
+  color: #f0e6cd;
+  border: 1px solid #c6a465;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 19px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.bookshop-button:hover {
+  background: #923d31;
+}
+.bookshop-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+.bookshop-return {
+  margin-top: 30px;
+}
+.bookshop-page :focus-visible {
+  outline: 2px solid #c6a465;
+  outline-offset: 4px;
+}
+.bookshop-notice {
+  margin-top: 24px;
+  padding: 16px 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  border: 1px solid #6a614e;
+}
+.bookshop-notice--success {
+  background: #20342b;
+  color: #d4dfc7;
+  border-color: #67856d;
+}
+.bookshop-notice--error {
+  background: #43251f;
+  color: #f2c9b4;
+  border-color: #b77559;
+}
+.bookshop-page-footer {
+  position: relative;
+  text-align: center;
+  color: #b7ad98;
+  font-size: 17px;
+  padding: 20px 0 45px;
+}
+.bookshop-page-footer span {
+  display: block;
+  color: #b89552;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.bookshop-page-footer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -40px;
+  right: -40px;
+  height: 15px;
+  background: repeating-conic-gradient(#090f16 0 25%, #b9b099 0 50%) 0/30px 30px;
+  opacity: 0.55;
+}
+.bookshop-page--compact .bookshop-page-card {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+@media (max-width: 600px) {
+  .bookshop-page {
+    padding: 24px 18px 0;
+  }
+  .bookshop-page-header .library-brand {
+    font-size: 24px;
+  }
+  .bookshop-back {
+    font-size: 14px;
+  }
+  .bookshop-page-card {
+    padding: 30px 22px;
+    margin: 40px auto;
+  }
+  .bookshop-page-card h1 {
+    font-size: 36px;
+  }
+  .bookshop-page-moon {
+    right: 20px;
+    top: 20px;
+    font-size: 26px;
+  }
+  .bookshop-page-copy {
+    font-size: 18px;
+  }
+  .bookshop-page-card > .eyebrow {
+    max-width: 85%;
+    font-size: 9px;
+  }
+  .bookshop-page--compact .bookshop-page-card {
+    margin: 60px auto;
+  }
+  .bookshop-page-footer::after {
+    left: -18px;
+    right: -18px;
+  }
+}

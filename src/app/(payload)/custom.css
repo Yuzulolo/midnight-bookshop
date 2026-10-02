@@ -1,1 +1,69 @@
-/* Add custom admin panel styles here. */
+/* Use Payload's theme tokens so drawers, tables and collection controls stay native.
+   Keep body text sans-serif and status colors intact; serif headings echo the shop. */
+:root,
+html[data-theme="light"],
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --theme-elevation-0: #0d1523;
+  --theme-elevation-50: #121c2b;
+  --theme-elevation-100: #192536;
+  --theme-elevation-150: #253145;
+  --theme-elevation-200: #354055;
+  --theme-elevation-250: #465064;
+  --theme-elevation-300: #566074;
+  --theme-elevation-350: #677082;
+  --theme-elevation-400: #78808e;
+  --theme-elevation-450: #8b8e96;
+  --theme-elevation-500: #9c9b98;
+  --theme-elevation-550: #aba79e;
+  --theme-elevation-600: #b7af9f;
+  --theme-elevation-650: #c1b7a4;
+  --theme-elevation-700: #ccbea6;
+  --theme-elevation-750: #d4c7af;
+  --theme-elevation-800: #ded1b7;
+  --theme-elevation-850: #e7dfc6;
+  --theme-elevation-900: #eee5cf;
+  --theme-elevation-950: #f4ecd8;
+  --theme-elevation-1000: #faf3e3;
+  --theme-bg: #0d1523;
+  --theme-input-bg: #121c2b;
+  --theme-text: #e7dfc6;
+  --theme-border-color: #354055;
+  --theme-overlay: rgb(5 10 18 / 80%);
+  --font-serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --accessibility-outline: 2px solid #c6a465;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+.nav {
+  background: #0a111d;
+  border-right: 1px solid #354055;
+}
+.nav a:hover {
+  color: #e0bb79;
+}
+.nav-group__label {
+  color: #c6a465;
+}
+
+/* Warm accents without changing destructive buttons or semantic status colors. */
+.btn--style-primary:not(.btn--disabled) {
+  background: #c6a465;
+  color: #101723;
+  border-color: #c6a465;
+}
+.btn--style-primary:not(.btn--disabled):hover {
+  background: #dbc08a;
+  color: #101723;
+}
+::selection {
+  background: #793025;
+  color: #faf3e3;
+}
