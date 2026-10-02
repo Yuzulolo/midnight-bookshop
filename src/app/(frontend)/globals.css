@@ -25,3 +25,1045 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Midnight Library is scoped so CMS, submission and order pages retain their UI. */
+.midnight-library {
+  --ivory: #e7dfc6;
+  --ink: #090f16;
+  position: relative;
+  height: 100svh;
+  min-height: 650px;
+  overflow: hidden;
+  background: #123789;
+  color: var(--ivory);
+  font-family: var(--font-eb-garamond), Georgia, serif;
+}
+.library-scene,
+.paper-grain,
+.library-vignette {
+  position: absolute;
+  inset: 0;
+}
+.library-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.library-scene canvas:active {
+  cursor: grabbing;
+}
+.paper-grain {
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.55' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.library-vignette {
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    #050b1799 100%
+  );
+}
+.library-header {
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  z-index: 2;
+}
+.library-brand {
+  font-size: 34px;
+  letter-spacing: 0.27em;
+  line-height: 1;
+  text-decoration: none;
+}
+.library-brand span {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  margin-top: 13px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.submit-link {
+  font-size: 17px;
+  border-bottom: 1px solid #e7dfc665;
+  padding-bottom: 4px;
+}
+.search-trigger {
+  border: 1px solid #ddd2b3;
+  background: #080e17ee;
+  min-width: 250px;
+  padding: 8px 20px;
+  border-radius: 40px;
+  text-align: left;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.search-trigger > span:first-child {
+  font-size: 32px;
+  line-height: 1;
+}
+.key-hint {
+  margin-left: auto;
+  font-size: 15px;
+  opacity: 0.5;
+}
+.midnight-library button {
+  cursor: pointer;
+}
+.midnight-library button:disabled {
+  cursor: wait;
+}
+.midnight-library :focus-visible {
+  outline: 2px solid #efba55;
+  outline-offset: 5px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+}
+.enter-button {
+  border: 1px solid #c49b5d;
+  background: #7b3027;
+  color: #f2e4c6;
+  padding: 13px 24px;
+  font-size: 18px;
+  display: inline-flex;
+  gap: 35px;
+  align-items: center;
+}
+.library-footer {
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  pointer-events: none;
+}
+.library-footer > * {
+  pointer-events: auto;
+}
+.room-caption h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+.ornament {
+  font-size: 12px;
+}
+.room-caption p {
+  font-size: 16px;
+}
+.room-caption p span {
+  opacity: 0.7;
+}
+.explore-controls {
+  text-align: center;
+}
+.explore-controls > p {
+  display: inline-block;
+  background: #080e17ef;
+  border: 1px solid #c6b997;
+  border-radius: 30px;
+  padding: 8px 24px;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.explore-controls nav {
+  display: flex;
+  gap: 6px;
+  background: #080e17e6;
+  padding: 6px;
+  border: 1px solid #c6b99755;
+  border-radius: 3px;
+}
+.explore-controls button {
+  font-size: 14px;
+  padding: 5px 10px;
+  color: #c8bea6;
+}
+.explore-controls button[aria-current] {
+  background: #793025;
+  color: #fff1d5;
+}
+.map-trigger {
+  width: 60px;
+  height: 60px;
+  background: #090f16e8;
+  border: 1px solid #e7dfc6;
+  border-radius: 50%;
+  font-size: 34px;
+}
+.library-panel {
+  position: absolute;
+  right: 24px;
+  top: 108px;
+  bottom: 120px;
+  width: 410px;
+  max-width: calc(100% - 48px);
+  background: #0b121bf5;
+  border: 1px solid #b9aa86;
+  padding: 30px;
+  overflow: auto;
+  z-index: 4;
+  box-shadow: 0 15px 60px #0005;
+}
+.panel-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 30px;
+  line-height: 1;
+  padding: 4px;
+}
+.library-panel h2 {
+  font-size: 34px;
+  line-height: 1.05;
+  margin: 18px 0 26px;
+  font-weight: 400;
+}
+.catalogue-search {
+  display: block;
+  font-size: 14px;
+  color: #c9c0ab;
+}
+.catalogue-search input {
+  display: block;
+  background: #141e2c;
+  border: 1px solid #6b6b66;
+  width: 100%;
+  color: #e7dfc6;
+  padding: 12px;
+  margin: 7px 0 20px;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 18px;
+}
+.result-count {
+  font-size: 14px;
+  opacity: 0.65;
+}
+.catalogue-list {
+  margin: 18px 0;
+}
+.catalogue-list li {
+  border-top: 1px solid #e7dfc625;
+}
+.catalogue-list button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 0;
+  text-align: left;
+}
+.catalogue-list button > span:last-child {
+  margin-left: auto;
+}
+.catalogue-list strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+}
+.catalogue-list small {
+  font-size: 14px;
+  opacity: 0.6;
+}
+.catalogue-spine {
+  width: 25px;
+  height: 47px;
+  background: #793025;
+  border: 1px solid #b89552;
+  color: #cda35e;
+  display: grid;
+  place-items: center;
+}
+.catalogue-submit {
+  display: inline-block;
+  margin-top: 15px;
+  border-bottom: 1px solid #b9aa86;
+  font-size: 17px;
+}
+.room-map {
+  border: 1px solid #b9aa86;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  margin: 25px 0;
+  background: repeating-conic-gradient(#16223a 0% 25%, #0b121b 0% 50%) 0/32px
+    32px;
+}
+.room-map span {
+  border: 1px solid #e7dfc6;
+  background: #111c2f;
+  padding: 12px 20px;
+}
+.room-map i {
+  font-size: 40px;
+  color: #bc7d50;
+}
+.panel-copy {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.map-nav {
+  margin-top: 24px;
+}
+.map-nav button {
+  display: flex;
+  width: 100%;
+  padding: 15px 0;
+  gap: 16px;
+  border-top: 1px solid #e7dfc633;
+  font-size: 19px;
+}
+.map-nav button span:first-child {
+  color: #b68f4c;
+}
+.map-nav button span:last-child {
+  margin-left: auto;
+}
+.book-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #040913b8;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: 25px;
+  backdrop-filter: blur(5px);
+}
+.book-dialog {
+  position: relative;
+  background: #e1d7bc;
+  color: #1b2025;
+  max-width: 800px;
+  max-height: 90svh;
+  overflow: auto;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 40px;
+  border: 3px solid #0b111a;
+  box-shadow: 12px 12px 0 #793025;
+}
+.selected-cover {
+  align-self: start;
+  transform: rotate(-3deg);
+}
+.selected-cover img {
+  width: 100%;
+  height: auto;
+}
+.book-information h2 {
+  font-size: 38px;
+  line-height: 1.05;
+  margin: 15px 0 8px;
+  font-weight: 400;
+}
+.book-author {
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.book-information > p:not(.eyebrow) {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.book-condition {
+  margin-top: 20px;
+  opacity: 0.65;
+}
+.book-price {
+  margin: 12px 0 20px;
+}
+.checkout-error,
+.webgl-message {
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  max-width: 420px;
+  background: #793025;
+  padding: 14px 20px;
+  z-index: 3;
+}
+.webgl-message {
+  background: #0b121b;
+}
+
+@media (max-width: 900px) {
+  .library-header {
+    left: 24px;
+    right: 24px;
+    top: 24px;
+  }
+  .library-footer {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+  .submit-link {
+    display: none;
+  }
+  .room-caption p span {
+    display: none;
+  }
+  .explore-controls nav {
+    max-width: 350px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .explore-controls > p {
+    font-size: 15px;
+  }
+  .library-brand {
+    font-size: 28px;
+  }
+  .search-trigger {
+    min-width: 200px;
+  }
+  .room-caption h2 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .midnight-library {
+    min-height: 620px;
+  }
+  .library-header {
+    left: 18px;
+    right: 18px;
+  }
+  .library-brand {
+    font-size: 24px;
+  }
+  .search-trigger {
+    min-width: 0;
+    font-size: 16px;
+    padding: 7px 12px;
+    gap: 8px;
+  }
+  .key-hint {
+    display: none;
+  }
+  .library-footer {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .room-caption {
+    flex: 1;
+  }
+  .map-trigger {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+  }
+  .explore-controls {
+    order: 3;
+    width: 100%;
+  }
+  .explore-controls > p {
+    margin-top: 10px;
+  }
+  .explore-controls nav {
+    max-width: none;
+  }
+  .explore-controls button {
+    font-size: 13px;
+    padding: 5px 7px;
+  }
+  .eyebrow {
+    font-size: 9px;
+  }
+  .library-panel {
+    right: 12px;
+    max-width: calc(100% - 24px);
+    top: 95px;
+    bottom: 20px;
+    padding: 26px;
+  }
+  .book-dialog {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 35px 25px;
+  }
+  .selected-cover {
+    width: 130px;
+    margin: auto;
+  }
+  .book-information h2 {
+    font-size: 30px;
+  }
+  .book-backdrop {
+    padding: 18px;
+  }
+  .checkout-error,
+  .webgl-message {
+    left: 18px;
+    right: 18px;
+  }
+}
+
+/* The bookshop opens straight onto the counter, with no entrance sequence. */
+.midnight-bookshop .room-caption h1 {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.midnight-bookshop .map-trigger {
+  display: grid;
+  place-items: center;
+}
+.shop-owner-chat {
+  position: absolute;
+  right: 32px;
+  bottom: 160px;
+  width: 350px;
+  z-index: 3;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  color: #e7dfc6;
+}
+.owner-chat-window {
+  border: 1px solid #b9aa86;
+  background: #0b121bf5;
+  box-shadow: 7px 7px 0 #090f1650;
+  display: flex;
+  flex-direction: column;
+  max-height: min(560px, calc(100svh - 285px));
+}
+.owner-chat-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #b9aa8644;
+  background: #192335;
+}
+.owner-chat-header img {
+  height: 48px;
+  object-fit: cover;
+  object-position: top;
+  width: 35px;
+}
+.owner-chat-header h2 {
+  font-weight: 400;
+  font-size: 24px;
+}
+.owner-chat-header .eyebrow {
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: #c49b5d;
+}
+.owner-chat-header button {
+  margin-left: auto;
+  font-size: 26px;
+  padding: 5px;
+}
+.owner-chat-log {
+  padding: 20px;
+  overflow: auto;
+  min-height: 110px;
+  overscroll-behavior: contain;
+  scrollbar-color: #796b51 #111a29;
+  scrollbar-width: thin;
+}
+.chat-message {
+  margin-bottom: 16px;
+}
+.chat-message > span {
+  display: block;
+  text-transform: uppercase;
+  font:
+    9px Arial,
+    sans-serif;
+  letter-spacing: 0.15em;
+  color: #b89552;
+  margin-bottom: 6px;
+}
+.chat-message p {
+  font-size: 19px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.chat-message.user {
+  background: #1c2a3e;
+  margin-left: 24px;
+  padding: 12px 15px;
+  border-left: 2px solid #8f4934;
+}
+.chat-message.user > span {
+  color: #d0c5ad;
+}
+.chat-message.user p {
+  font-size: 17px;
+}
+.owner-thinking {
+  font-size: 15px;
+  font-style: italic;
+  opacity: 0.6;
+}
+.chat-starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0 20px 18px;
+}
+.chat-starters button {
+  border: 1px solid #ab987255;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: #1a2432;
+}
+.chat-starters button:hover {
+  border-color: #c49b5d;
+  background: #793025;
+}
+.owner-chat-form {
+  display: flex;
+  margin: 0 16px 12px;
+  background: #070d16;
+  border: 1px solid #99896c;
+}
+.owner-chat-form input {
+  font-family: inherit;
+  font-size: 17px;
+  padding: 12px;
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  color: #e7dfc6;
+}
+.owner-chat-form input::placeholder {
+  color: #a49881;
+}
+.owner-chat-form button {
+  font-size: 23px;
+  background: #793025;
+  width: 43px;
+  flex-shrink: 0;
+}
+.owner-chat-form button:disabled {
+  opacity: 0.4;
+}
+.chat-footnote {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 0 16px 12px;
+  font:
+    9px Arial,
+    sans-serif;
+  color: #b1a58f;
+}
+.chat-footnote button {
+  text-decoration: underline;
+}
+.owner-chat-trigger {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #0b121bf5;
+  border: 1px solid #b9aa86;
+  border-radius: 3px;
+  padding: 13px 20px;
+  font-size: 19px;
+  margin-left: auto;
+}
+.owner-chat-trigger > span {
+  color: #c49b5d;
+}
+.chat-matches {
+  margin: 15px 0;
+}
+.chat-matches li {
+  border: 1px solid #b9aa8655;
+  margin-bottom: 8px;
+}
+.chat-matches button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+}
+.chat-matches strong {
+  font-size: 19px;
+  display: block;
+  font-weight: 400;
+}
+.chat-matches small {
+  display: block;
+  color: #b7aa90;
+  font-size: 14px;
+}
+.chat-matches button > span {
+  display: block;
+  font-size: 13px;
+  margin-top: 7px;
+  color: #c49b5d;
+}
+.chat-error {
+  border-left: 2px solid #bb6b4a;
+  padding: 10px;
+  background: #79302544;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.chat-error a {
+  display: block;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+.listing-review {
+  border: 1px solid #b9aa8666;
+  padding: 15px;
+  background: #192335;
+  margin: 16px 0;
+}
+.listing-review h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.listing-review dl {
+  font-size: 15px;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 7px;
+}
+.listing-review dt {
+  color: #bda67d;
+}
+.listing-review dd {
+  overflow-wrap: anywhere;
+}
+.listing-review > p {
+  font-size: 13px;
+  margin: 15px 0;
+  color: #b7aa90;
+}
+.listing-review .enter-button {
+  font-size: 15px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+}
+.edit-listing {
+  font-size: 14px;
+  text-decoration: underline;
+  margin-top: 12px;
+}
+@media (max-width: 900px) {
+  .shop-owner-chat {
+    right: 24px;
+    width: 320px;
+    bottom: 175px;
+  }
+  .midnight-bookshop .room-caption h1 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 600px) {
+  .shop-owner-chat {
+    right: 12px;
+    bottom: 180px;
+    width: calc(100% - 24px);
+    max-width: 350px;
+  }
+  .owner-chat-window {
+    max-height: calc(100svh - 290px);
+  }
+  .owner-chat-header {
+    padding: 10px 15px;
+  }
+  .owner-chat-log {
+    padding: 15px;
+  }
+  .chat-message p {
+    font-size: 17px;
+  }
+  .midnight-bookshop .room-caption h1 {
+    font-size: 21px;
+  }
+  .chat-footnote {
+    font-size: 8px;
+  }
+  .midnight-bookshop .library-panel {
+    z-index: 4;
+  }
+}
+
+.intention-bubble {
+  border: 1px solid #ab987255;
+  background: #141e2d;
+  padding: 12px 14px;
+}
+.intention-bubble > span {
+  display: block;
+  text-transform: uppercase;
+  font:
+    9px Arial,
+    sans-serif;
+  letter-spacing: 0.15em;
+  color: #b89552;
+  margin-bottom: 6px;
+}
+.intention-bubble > p {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+.intention-bubble .chat-starters {
+  padding: 0;
+  gap: 6px;
+}
+.intention-bubble .chat-starters button {
+  font-size: 13px;
+  padding: 6px 8px;
+}
+.owner-typing-cursor {
+  color: #b89552;
+}
+
+/* Game dialogue: a portrait and one line, with choices replacing the transcript. */
+.game-conversation {
+  left: 50%;
+  right: auto;
+  bottom: 150px;
+  transform: translateX(-50%);
+  width: min(520px, calc(100% - 48px));
+  max-width: none;
+}
+.game-dialogue-window {
+  position: relative;
+  background: #090d14;
+  border: 2px solid #080b10;
+  border-radius: 5px;
+  box-shadow:
+    inset 0 0 0 1px #b69a6255,
+    8px 8px 0 #080d1640;
+  color: #e7dfc6;
+  padding: 14px 18px 10px;
+  border-top: 3px solid #793025;
+}
+.game-dialogue-close {
+  position: absolute;
+  right: 12px;
+  top: 7px;
+  font-size: 25px;
+  line-height: 1;
+  z-index: 1;
+  color: #b6a78c;
+  padding: 4px;
+}
+.game-dialogue-stage {
+  display: block;
+}
+.game-owner-portrait {
+  position: absolute;
+  top: -70px;
+  left: 16px;
+  width: 72px;
+  height: 88px;
+  object-fit: contain;
+  align-self: start;
+  margin: 0;
+}
+.game-dialogue-content {
+  align-self: start;
+  padding: 0 10px 2px 0;
+  min-width: 0;
+}
+.game-dialogue-content > .eyebrow {
+  color: #c29b5b;
+  margin: 0 0 8px 76px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+.game-dialogue-text {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  min-height: 0;
+  max-height: 120px;
+  overflow: auto;
+  padding-bottom: 4px;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 17px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.game-continue {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 13px;
+  color: #bda16c;
+  letter-spacing: 0.05em;
+}
+.game-dialogue-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.game-dialogue-choices button {
+  border: 1px solid #9f865244;
+  padding: 5px 8px;
+  color: #e7dfc6;
+  background: #192233;
+  font-size: 12px;
+}
+.game-dialogue-choices button span {
+  margin-left: 8px;
+  color: #c39a5c;
+}
+.game-dialogue-choices button:hover {
+  background: #793025;
+  border-color: #b89552;
+}
+.game-dialogue-details {
+  max-height: 35svh;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.game-dialogue-details:empty {
+  display: none;
+}
+.game-dialogue-details .chat-matches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+.game-dialogue-details .listing-review {
+  margin: 10px 0;
+}
+.game-conversation .owner-chat-form {
+  margin: 6px 0;
+}
+.game-conversation .chat-footnote {
+  padding: 8px 0 0;
+  border-top: 1px solid #b9aa8622;
+}
+.game-conversation:not(.is-open) {
+  pointer-events: none;
+}
+.game-conversation .owner-chat-trigger {
+  pointer-events: auto;
+}
+@media (max-width: 900px) {
+  .game-conversation {
+    width: min(520px, calc(100% - 48px));
+    right: auto;
+    bottom: 175px;
+  }
+}
+@media (max-width: 600px) {
+  .game-conversation {
+    width: calc(100% - 24px);
+    right: auto;
+    bottom: 185px;
+  }
+  .game-dialogue-window {
+    padding: 16px 14px 10px;
+  }
+  .game-dialogue-stage {
+    display: block;
+  }
+  .game-owner-portrait {
+    top: -58px;
+    left: 14px;
+    width: 60px;
+    height: 74px;
+    margin: 0;
+  }
+  .game-dialogue-text {
+    font-size: 16px;
+    min-height: 0;
+  }
+  .game-dialogue-content {
+    padding-right: 4px;
+  }
+  .game-dialogue-content > .eyebrow {
+    font-size: 8px;
+    margin: 0 0 7px 64px;
+  }
+  .game-dialogue-choices {
+    gap: 5px;
+  }
+  .game-dialogue-choices button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+  .game-dialogue-choices button span {
+    margin-left: 6px;
+  }
+  .game-dialogue-details .chat-matches {
+    grid-template-columns: 1fr;
+  }
+  .game-dialogue-details {
+    max-height: 25svh;
+  }
+  .game-conversation .chat-footnote {
+    font-size: 8px;
+  }
+}
+
+.game-conversation .owner-chat-form input {
+  font-size: 15px;
+  padding: 8px 10px;
+}
+.game-conversation .owner-chat-form button {
+  width: 34px;
+  font-size: 19px;
+}
+
+/* Place the conversation between the central desk and the right staircase. */
+.game-conversation {
+  left: min(67%, calc(100% - 234px));
+  right: auto;
+  top: auto;
+  bottom: 150px;
+  transform: translateX(-50%);
+  width: min(420px, calc(100% - 48px));
+}
+@media (max-width: 900px) {
+  .game-conversation {
+    left: min(67%, calc(100% - 234px));
+    right: auto;
+    bottom: 175px;
+    width: min(420px, calc(100% - 48px));
+  }
+}
+@media (max-width: 600px) {
+  .game-conversation {
+    left: auto;
+    right: 12px;
+    transform: none;
+    bottom: 185px;
+    width: calc(100% - 24px);
+  }
+}

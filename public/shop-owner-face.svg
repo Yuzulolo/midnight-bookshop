@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="245" viewBox="110 85 200 245">
+<title>The owner of The Midnight Bookshop</title>
+<g stroke="#101319" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+<!-- Tall chair, weathered velvet coat, paper-pale face. -->
+<path d="M91 532V238Q92 183 200 158Q308 183 309 238V532Z" fill="#49251f"/>
+<path d="M104 527V250Q112 209 200 183Q288 209 296 250V527" fill="none" stroke="#986039" stroke-width="3"/>
+<path d="M132 337Q200 307 268 337L292 491L250 562H150L108 491Z" fill="#252c31"/>
+<path d="M180 291L177 335L200 372L224 334L220 291" fill="#c6b49b"/>
+<path d="M173 331L200 364L227 331L219 405H184Z" fill="#d9ceb6"/>
+<path d="M127 337L177 327L185 400L159 381L173 415L143 529H110Z" fill="#3b3d37"/>
+<path d="M273 337L225 327L216 400L241 381L228 415L260 529H292Z" fill="#3b3d37"/>
+<path d="M195 361L205 361L211 380L202 416L190 380Z" fill="#80372c"/>
+<path d="M151 190Q143 250 157 278Q171 313 201 316Q235 311 247 277L251 194Z" fill="#cbbda1"/>
+<path d="M150 225Q125 212 136 253L153 261M250 225Q274 214 262 251L247 263" fill="#b4a287"/>
+<path d="M151 199L151 237L163 218L165 193M248 199L249 236L239 216L238 192" fill="#6d6960"/>
+<path d="M151 205Q197 187 250 205" fill="none" stroke-width="3"/>
+<path d="M168 238L185 236M217 236L234 238" fill="none"/>
+<ellipse cx="177" cy="244" rx="4" ry="5" fill="#11161c" stroke="none"/>
+<ellipse cx="226" cy="244" rx="4" ry="5" fill="#11161c" stroke="none"/>
+<path d="M202 243L195 267L208 271" fill="none" stroke-width="3"/>
+<path d="M179 285Q201 290 223 283M175 259L178 268M228 259L226 268" fill="none" stroke-width="2"/>
+<path d="M183 280Q201 269 218 279L223 286L201 283L179 286Z" fill="#716b60" stroke-width="2"/>
+<!-- A crooked bowler; the shopkeeper keeps his own hours. -->
+<path d="M139 183L143 143Q147 99 197 96Q243 97 252 140L260 183Z" fill="#202729"/>
+<path d="M143 158L254 158L258 178L140 178Z" fill="#80372c"/>
+<path d="M115 183Q192 171 282 182L290 195Q202 215 112 195Z" fill="#22282b"/>
+<path d="M151 119Q164 105 180 106" fill="none" stroke="#53544b" stroke-width="3"/>
+<!-- Resting hands and sleeves, ready to pass a book across the desk. -->
+<path d="M130 349Q102 348 91 393L80 479L113 502L151 437" fill="#3b3d37"/>
+<path d="M270 349Q298 348 309 393L320 479L287 502L249 437" fill="#3b3d37"/>
+<path d="M84 476L120 490L158 469Q177 460 189 472L179 486L145 504L111 507Z" fill="#cbbda1"/>
+<path d="M316 476L280 490L242 469Q223 460 211 472L221 486L255 504L289 507Z" fill="#cbbda1"/>
+<path d="M140 484L168 477M143 492L170 482M260 484L232 477M257 492L230 482" fill="none" stroke-width="2"/>
+<path d="M191 446H209V467H191Z" fill="#b69752" stroke-width="2"/>
+<path d="M254 390Q229 418 201 455" fill="none" stroke="#b69752" stroke-width="2"/>
+</g>
+</svg>
