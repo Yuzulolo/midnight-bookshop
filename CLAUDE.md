@@ -28,3 +28,5 @@ them through the Payload admin panel.
 - 3D bookshop walkthrough: navigate the shop with arrow keys, browse shelves
 - Auto-generated book descriptions via LLM when submitting
 - Per-user accounts with owned listings (Stripe Connect for seller payouts)
+
+@AGENTS.md
