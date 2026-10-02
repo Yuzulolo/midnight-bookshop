@@ -12,7 +12,7 @@ the shop owner through the admin panel.
 ## How the owner edits content
 The owner manages all content through the Payload CMS admin panel at `/admin`. From 
 there, the owner can:
-- Review and approve book submissions (pending → approved), or delete ones you don't want
+- Review and approve book submissions (pending → approved), or delete unwanted ones
 - Create, edit, or delete book listings directly
 - View paid orders
 - Upload cover photos (books without photos display a generated cover)
