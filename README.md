@@ -43,8 +43,8 @@ The chat is limited to the bookshop:
 1. Clone the repo and install dependencies:
 
    ```bash
-   git clone https://github.com/TuringCollegeSubmissions/yuzeli-AFA.BAI.4.7.git
-   cd yuzeli-AFA.BAI.4.7
+   git clone https://github.com/Yuzulolo/midnight-bookshop.git
+   cd midnight-bookshop
    npm install
    ```
 
