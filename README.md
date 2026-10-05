@@ -19,6 +19,25 @@ there, the owner can:
 
 Changes made in the admin panel go live immediately with no redeploy needed.
 
+## Shop owner chat guardrails
+Visitors can chat with the shop owner (an LLM via OpenRouter) to find or list books. 
+The chat is limited to the bookshop:
+- **Topic lock**: the owner only discusses searching for books, listing books for 
+  sale/rent/exchange, recommendations, and how the platform works. Anything else 
+  (homework, coding, general knowledge, creative writing, personal advice) is politely 
+  declined: *"I'm just a humble bookshop owner — I only know about books! How can I 
+  help you find or list one?"*
+- **No persona overrides**: instructions that try to change the owner's rules or 
+  personality are ignored.
+- **History limit**: only the last 10 messages are sent to the model.
+- **Reply length**: replies are capped at 300 tokens, or 500 when the visitor is 
+  listing a book (the listing card needs room for the full details).
+- **Friendly errors**: if OpenRouter fails, visitors see *"The shop owner stepped away 
+  for a moment, please try again"* instead of the raw error.
+- **No side effects**: the owner can only search approved books and prepare a listing 
+  for review. It cannot submit, publish, charge, or delete anything; the visitor 
+  submits the listing, and it waits for admin approval.
+
 ## How to run locally
 
 1. Clone the repo and install dependencies:
