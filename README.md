@@ -2,6 +2,7 @@
 
 A secondhand book marketplace where visitors can browse, buy, rent, or list books 
 for exchange. Built with Next.js, Payload CMS, and Stripe Checkout. The online booked shop is deployed on vercel, the web link is:https://bookit-six-sandy.vercel.app/
+<img width="1431" height="671" alt="Screenshot 2026-10-06 at 22 46 48" src="https://github.com/user-attachments/assets/8d638c06-b673-4f64-ad42-66ee3c1db1a5" />
 
 ## What the shop sells
 Secondhand books — listed for sale, rent, or exchange. Visitors can browse approved 
