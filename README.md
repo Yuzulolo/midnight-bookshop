@@ -1,7 +1,7 @@
 # The Midnight Bookshop
 
 A secondhand book marketplace where visitors can browse, buy, rent, or list books 
-for exchange. Built with Next.js, Payload CMS, and Stripe Checkout.
+for exchange. Built with Next.js, Payload CMS, and Stripe Checkout. The online booked shop is deployed on vercel, the web link is:https://bookit-six-sandy.vercel.app/
 
 ## What the shop sells
 Secondhand books — listed for sale, rent, or exchange. Visitors can browse approved 
